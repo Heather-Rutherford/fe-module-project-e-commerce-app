@@ -4,6 +4,7 @@ import ShoppingCartItem from "../components/ShoppingCartItem";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import { useState } from "react";
+import type { CartItem } from "../types/CartItem";
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -18,7 +19,7 @@ const Cart: React.FC = () => {
     <div className="container mt-4">
       <h1>Your Cart</h1>
       <p>{cartItems.length} items in your cart</p>
-      <p>{cartItems.map((item) => item.product?.title).join(", ")}</p>
+      <p>{cartItems.map((item: CartItem) => item.product?.title).join(", ")}</p>
       {success && (
         <div className="alert alert-success" role="alert">
           {success}
@@ -31,8 +32,8 @@ const Cart: React.FC = () => {
           <div className="items-in-cart mb-3">
             <ul className="list-cart">
               {cartItems
-                .filter((item) => item.product)
-                .map((item) => (
+                .filter((item: CartItem) => item.product)
+                .map((item: CartItem) => (
                   <ShoppingCartItem
                     key={item.product.id}
                     product={item.product}
