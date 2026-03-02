@@ -1,10 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { type Product } from "../types/Product";
+import { getRandomRating } from "../utils/RandomRating";
 
 const fetchProducts = async (): Promise<Product[]> => {
   const res = await fetch("https://fakestoreapi.com/products");
   if (!res.ok) throw new Error("Network response was not ok");
-  return res.json();
+  const data = await res.json();
+  // Add random rating to each product
+  const productsWithRate = data.map((product: Omit<Product, "rate">) => ({
+    ...product,
+    rate: getRandomRating(),
+  }));
+  console.log("Fetched products with rate:", productsWithRate);
+  return productsWithRate;
 };
 
 export function useProducts() {
@@ -21,7 +29,15 @@ const fetchFilteredProductsByCategory = async (
     `https://fakestoreapi.com/products/category/${category}`,
   );
   if (!res.ok) throw new Error("Network response was not ok");
-  return res.json();
+  const data = await res.json();
+  const filteredProductsWithRate = data.map(
+    (product: Omit<Product, "rate">) => ({
+      ...product,
+      rate: getRandomRating(),
+    }),
+  );
+  console.log("Fetched filtered products with rate:", filteredProductsWithRate);
+  return filteredProductsWithRate;
 };
 
 export function useFilteredProductsByCategory(category: string) {

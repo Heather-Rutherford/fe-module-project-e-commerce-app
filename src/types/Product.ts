@@ -5,7 +5,7 @@ export interface Product {
   description: string;
   category: string;
   image: string;
-  rate: number;
+  rate: number; // Added rate property for product rating
 }
 
 export interface ProductState {

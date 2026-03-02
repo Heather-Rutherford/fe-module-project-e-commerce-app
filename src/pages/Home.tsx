@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import { useCategories } from "../hooks/useCategories";
 import { type RootState } from "../redux/store";
 import "../styles/styles.css";
+import { getRandomRating } from "../utils/RandomRating";
+import type { Product } from "../types/Product";
 
 // Home page component to display list of products
 // Fetches products from Fake Store API and displays them
@@ -28,7 +30,12 @@ const Home: React.FC = () => {
     async function fetchProducts() {
       const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
-      dispatch(getProductsListing(data));
+      // Add random rating to each product
+      const productsWithRate = data.map((product: Omit<Product, "rate">) => ({
+        ...product,
+        rate: getRandomRating(),
+      }));
+      dispatch(getProductsListing(productsWithRate));
     }
     fetchProducts();
   }, [dispatch]);
@@ -46,7 +53,7 @@ const Home: React.FC = () => {
 
   // Filter products based on dropdown values
   const filteredProducts = products.filter(
-    (product) =>
+    (product: Product) =>
       filters.category === "All" || product.category === filters.category,
   );
 
@@ -83,7 +90,7 @@ const Home: React.FC = () => {
         </div>
       </div>
       <div className="row">
-        {filteredProducts.map((product) => (
+        {filteredProducts.map((product: Product) => (
           <div className="col-md-4 mb-4" key={product.id}>
             <ProductCard key={product.id} product={product} />
           </div>
