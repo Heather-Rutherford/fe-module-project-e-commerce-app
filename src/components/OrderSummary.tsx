@@ -1,14 +1,11 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import type { CartItem } from "../types/CartItem";
-import { useNavigate } from "react-router";
-import { Button } from "react-bootstrap";
 
-const CartSummary: React.FC<{
+const OrderSummary: React.FC<{
   products: { price?: number; quantity?: number }[];
   onCheckout?: () => void;
 }> = () => {
-  const navigate = useNavigate();
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
   const total = cartItems
@@ -18,21 +15,15 @@ const CartSummary: React.FC<{
     }, 0)
     .toFixed(2);
 
-  // const itemCount = products.reduce(
-  //   (sum, item) => sum + (item.quantity || 1),
-  //   0,
-  // );
-
   return (
-    <div className="cart-summary">
-      <h4>Cart Summary</h4>
-      <p>Total Items: {cartItems.length}</p>
-      <p className="fw-bold">Total: ${total}</p>
-      <Button className="btn btn-primary" onClick={() => navigate("/checkout")}>
-        Proceed to Checkout
-      </Button>
+    <div className="order-summary mb-4">
+      <p>
+        <span className="fw-bold">Total Items:</span> {cartItems.length}
+        <br />
+        <span className="fw-bold">Total:</span> ${total}
+      </p>
     </div>
   );
 };
 
-export default CartSummary;
+export default OrderSummary;
