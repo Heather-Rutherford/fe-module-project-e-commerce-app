@@ -5,12 +5,51 @@ import { useState } from "react";
 import type { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 import OrderSummary from "../components/OrderSummary";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../redux/cartSlice";
 
 const Checkout: React.FC = () => {
+  // Custom hook or function
+  function useClearCart() {
+    const dispatch = useDispatch();
+    return () => {
+      dispatch(clearCart());
+      clearForm();
+      window.alert(
+        "Your payment has been processed and your cart has been cleared!",
+      );
+    };
+  }
+
+  const clearCartHandler = useClearCart();
+
   // Local form state
-  const [success, setSuccess] = useState("");
+  // const [success, setSuccess] = useState("");
   const cartItems = useSelector((state: RootState) => state.cart.items);
 
+  // Form field states
+  const [customerName, setCustomerName] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [shippingAddress, setShippingAddress] = useState("");
+  const [shippingCity, setShippingCity] = useState("");
+  const [shippingState, setShippingState] = useState("");
+  const [shippingZip, setShippingZip] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("United States");
+  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+
+  // Clear form fields after successful checkout
+  const clearForm = () => {
+    setCustomerName("");
+    setCustomerEmail("");
+    setCustomerPhone("");
+    setShippingAddress("");
+    setShippingCity("");
+    setShippingState("");
+    setShippingZip("");
+    setShippingCountry("United States");
+    setPaymentMethod("PayPal");
+  };
   return (
     <>
       <PageLayout>
@@ -25,11 +64,11 @@ const Checkout: React.FC = () => {
             <OrderSummary products={cartItems} />
           </div>
         </div>
-        {success && (
+        {/* {success && (
           <div className="alert alert-success" role="alert">
             {success}
           </div>
-        )}
+        )} */}
         <Form className="text-start position-relative">
           <section className="mb-4">
             <h2 className="h1-responsive font-weight-bold text-center my-4">
@@ -39,6 +78,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="text"
               id="CustomerName"
+              value={customerName}
+              onChange={(e) => setCustomerName(e.target.value)}
               placeholder="Enter your name"
               required
             />
@@ -46,6 +87,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="email"
               id="customerEmail"
+              value={customerEmail}
+              onChange={(e) => setCustomerEmail(e.target.value)}
               placeholder="Enter your email"
               required
             />
@@ -53,6 +96,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="tel"
               id="CustomerPhone"
+              value={customerPhone}
+              onChange={(e) => setCustomerPhone(e.target.value)}
               placeholder="Enter your phone number"
               required
             />
@@ -65,6 +110,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="text"
               id="shippingAddress"
+              value={shippingAddress}
+              onChange={(e) => setShippingAddress(e.target.value)}
               placeholder="Enter your shipping address"
               required
             />
@@ -72,11 +119,19 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="text"
               id="shippingCity"
+              value={shippingCity}
+              onChange={(e) => setShippingCity(e.target.value)}
               placeholder="Enter your city"
               required
             />
             <Form.Label htmlFor="shippingState">State</Form.Label>
-            <Form.Control as="select" id="shippingState" required>
+            <Form.Control
+              as="select"
+              id="shippingState"
+              value={shippingState}
+              onChange={(e) => setShippingState(e.target.value)}
+              required
+            >
               <option value="">Select your state</option>
               <option value="Alabama">Alabama</option>
               <option value="Alaska">Alaska</option>
@@ -133,6 +188,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="text"
               id="shippingZip"
+              value={shippingZip}
+              onChange={(e) => setShippingZip(e.target.value)}
               placeholder="Enter your zip code"
               required
             />
@@ -140,7 +197,8 @@ const Checkout: React.FC = () => {
             <Form.Control
               type="text"
               id="shippingCountry"
-              value="United States"
+              value={shippingCountry}
+              onChange={(e) => setShippingCountry(e.target.value)}
               placeholder="Enter your country"
               required
             />
@@ -150,20 +208,20 @@ const Checkout: React.FC = () => {
             <Form.Label htmlFor="paymentMethod">
               Select Payment Method
             </Form.Label>
-            <Form.Control as="select" id="paymentMethod" required>
+            <Form.Control
+              as="select"
+              id="paymentMethod"
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              required
+            >
               <option value="PayPal">PayPal</option>
               <option value="CreditCard">Credit Card</option>
               <option value="ApplePay">Apple Pay</option>
               <option value="GooglePay">Google Pay</option>
             </Form.Control>
           </section>
-          <Button
-            className="btn btn-primary"
-            onClick={() => {
-              setSuccess("Checkout successful! Your order has been placed.");
-              setTimeout(() => setSuccess(""), 3000); // Clear the success message after 3 seconds
-            }}
-          >
+          <Button className="btn btn-primary" onClick={clearCartHandler}>
             Place Order
           </Button>
         </Form>

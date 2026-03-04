@@ -25,7 +25,7 @@ function ProductCard({ product }: ProductCardProps) {
           src={product.image}
           alt={product.title}
           className="card-img-top product-img"
-          style={{ height: "200px", objectFit: "contain" }}
+          style={{ height: "150px", objectFit: "contain" }}
           onError={(e) => {
             e.currentTarget.src = "https://placehold.co/150?text=Product+Image";
           }}

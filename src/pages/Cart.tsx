@@ -3,16 +3,18 @@ import CartSummary from "../components/CartSummary";
 import ShoppingCartItem from "../components/ShoppingCartItem";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
-import { useState } from "react";
+// import { useState } from "react";
 import type { CartItem } from "../types/CartItem";
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const [success, setSuccess] = useState("");
+  // const [success, setSuccess] = useState("");
 
   const handleDeleteSuccess = (msg: string) => {
-    setSuccess(msg);
-    setTimeout(() => setSuccess(""), 3000);
+    window.alert(msg);
+
+    // setSuccess(msg);
+    // setTimeout(() => setSuccess(""), 3000);
   };
 
   return (
@@ -20,11 +22,11 @@ const Cart: React.FC = () => {
       <h1>Your Cart</h1>
       <p>{cartItems.length} items in your cart</p>
       <p>{cartItems.map((item: CartItem) => item.product?.title).join(", ")}</p>
-      {success && (
+      {/* {success && (
         <div className="alert alert-success" role="alert">
           {success}
         </div>
-      )}
+      )} */}
       {cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
