@@ -11,11 +11,16 @@ type ProductCardProps = {
 function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch();
   const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
-    setSuccess("Product added to cart successfully!");
-    setTimeout(() => setSuccess(""), 3000); // Clear the success message after 3 seconds
+    try {
+      dispatch(addToCart(product));
+      window.alert("Product added to cart successfully!");
+    } catch (err) {
+      console.error(err);
+      window.alert("Failed to add product to cart. Please try again.");
+    }
   };
 
   return (
@@ -44,6 +49,11 @@ function ProductCard({ product }: ProductCardProps) {
           {success && (
             <div className="alert alert-success" role="alert">
               {success}
+            </div>
+          )}
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              {error}
             </div>
           )}
           <Button

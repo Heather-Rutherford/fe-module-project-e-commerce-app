@@ -16,6 +16,7 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
   onDeleteSuccess,
 }) => {
   const dispatch = useDispatch();
+  const [error, setError] = React.useState("");
   const handleQuantityChange = (id: number, quantity: number) => {
     if (quantity < 1) {
       handleDelete(); // Prevent quantity from going below 1
@@ -28,9 +29,15 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
 
   const handleDelete = () => {
     if (window.confirm(`Remove ${product.title || "product"} from cart?`)) {
-      dispatch(removeFromCart(product.id));
-      if (onDeleteSuccess) {
-        onDeleteSuccess("Product removed from cart successfully!");
+      try {
+        dispatch(removeFromCart(product.id));
+        setError("");
+        if (onDeleteSuccess) {
+          onDeleteSuccess("Product removed from cart successfully!");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Failed to remove product from cart. Please try again.");
       }
     }
   };
@@ -77,6 +84,11 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
           Subtotal: ${subtotal || "0.00"}
         </p>
       </div>
+      {error && (
+        <div className="alert alert-danger mt-2" role="alert">
+          {error}
+        </div>
+      )}
     </li>
   );
 };

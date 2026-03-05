@@ -110,7 +110,27 @@ fieldset {
   margin-top: var(--spacing-lg);
 }
 
-/* ========================================
+.order-item {
+  /* Individual order item styling */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-bottom: var(--border-default);
+}
+
+.order-summary {
+  /* Order summary section styling */
+  text-align: left;
+  margin-top: var(--spacing-lg);
+  margin-right: var(--spacing-xl);
+}
+
+.total-items-section {
+  margin-top: 20px; /* Adjust value as needed */
+}
+/* ======
+==================================
    FORM STYLES
    ======================================== */
 .label {

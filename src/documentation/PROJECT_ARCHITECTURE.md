@@ -1,11 +1,13 @@
 # Project Architecture: E-Commerce App
 
 ## Overview
+
 This project is a modular, scalable e-commerce web application built with React, Redux Toolkit, TypeScript, and Vite. It follows a feature-based folder structure to promote maintainability and extensibility.
 
 ---
 
 ## Tech Stack
+
 - **Frontend Framework:** React (with TypeScript)
 - **State Management:** Redux Toolkit, React-Redux, redux-persist
 - **Routing:** React Router DOM
@@ -33,6 +35,7 @@ src/
 ---
 
 ## Application Flow
+
 1. **Entry Point:**
    - `main.tsx` initializes the app, wraps it with Redux Provider, QueryClientProvider, and BrowserRouter.
 2. **Routing:**
@@ -50,6 +53,7 @@ src/
 ---
 
 ## Key Files & Their Roles
+
 - **main.tsx:** App bootstrap and provider setup.
 - **App.tsx:** Route definitions and layout.
 - **redux/store.ts:** Redux store configuration and persistence.
@@ -63,6 +67,7 @@ src/
 ---
 
 ## Extensibility
+
 - **Feature-based structure** allows easy addition of new features (e.g., user authentication, order history).
 - **TypeScript** ensures robust type safety and easier refactoring.
 - **Redux Toolkit** simplifies state logic and enables scalable state management.
@@ -70,6 +75,7 @@ src/
 ---
 
 ## Diagram
+
 ```
 [main.tsx] → [App.tsx] → [Pages] → [Components]
            ↓            ↓         ↓
@@ -79,4 +85,5 @@ src/
 ---
 
 ## Summary
+
 This architecture provides a clean separation of concerns, modularity, and scalability for building a modern e-commerce application. All major features are encapsulated in their own modules, making the codebase easy to navigate and extend.

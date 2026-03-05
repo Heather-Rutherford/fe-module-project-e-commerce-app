@@ -28,7 +28,10 @@ const fetchFilteredProductsByCategory = async (
   const res = await fetch(
     `https://fakestoreapi.com/products/category/${category}`,
   );
-  if (!res.ok) throw new Error("Network response was not ok");
+  if (!res.ok)
+    throw new Error(
+      "Unable to load products. Please check your internet connection and try again.",
+    );
   const data = await res.json();
   const filteredProductsWithRate = data.map(
     (product: Omit<Product, "rate">) => ({
@@ -36,7 +39,6 @@ const fetchFilteredProductsByCategory = async (
       rate: getRandomRating(),
     }),
   );
-  console.log("Fetched filtered products with rate:", filteredProductsWithRate);
   return filteredProductsWithRate;
 };
 

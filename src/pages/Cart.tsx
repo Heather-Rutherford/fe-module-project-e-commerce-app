@@ -21,12 +21,6 @@ const Cart: React.FC = () => {
     <div className="container mt-4">
       <h1>Your Cart</h1>
       <p>{cartItems.length} items in your cart</p>
-      <p>{cartItems.map((item: CartItem) => item.product?.title).join(", ")}</p>
-      {/* {success && (
-        <div className="alert alert-success" role="alert">
-          {success}
-        </div>
-      )} */}
       {cartItems.length === 0 ? (
         <EmptyCart />
       ) : (
