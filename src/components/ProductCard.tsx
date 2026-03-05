@@ -2,7 +2,6 @@ import { Button } from "react-bootstrap";
 import { type Product } from "../types/Product";
 import { addToCart } from "../types/cartSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 type ProductCardProps = {
   product: Product;
@@ -10,8 +9,6 @@ type ProductCardProps = {
 
 function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch();
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
 
   const handleAddToCart = () => {
     try {
@@ -46,16 +43,6 @@ function ProductCard({ product }: ProductCardProps) {
           <p className="card-text">${product.price}</p>
         </div>
         <div className="card-footer">
-          {success && (
-            <div className="alert alert-success" role="alert">
-              {success}
-            </div>
-          )}
-          {error && (
-            <div className="alert alert-danger" role="alert">
-              {error}
-            </div>
-          )}
           <Button
             className="btn btn-primary float-end"
             onClick={handleAddToCart}
