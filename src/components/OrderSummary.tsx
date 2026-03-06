@@ -15,9 +15,14 @@ const OrderSummary: React.FC<{
     }, 0)
     .toFixed(2);
 
+  const itemCount = cartItems.reduce(
+    (sum: number, item: CartItem) => sum + (item.quantity || 1),
+    0,
+  );
+
   return (
     <div className="order-summary justify-content-left">
-      <p>{cartItems.length} items in your cart</p>
+      <p>{itemCount} items in your cart</p>
       <p className="product-title">
         {cartItems.map((item: CartItem) => (
           <div key={item.product?.id} className="order-item">
@@ -30,6 +35,10 @@ const OrderSummary: React.FC<{
               }}
             />
             {item.product?.title}
+            {item.quantity && item.quantity > 1 && (
+              <span className="ms-2">- {item.quantity}</span>
+            )}{" "}
+            {item.quantity && item.quantity > 1 ? "Items" : "- 1 Item"}
           </div>
         ))}
       </p>

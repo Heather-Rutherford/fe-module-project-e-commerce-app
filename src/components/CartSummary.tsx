@@ -18,15 +18,15 @@ const CartSummary: React.FC<{
     }, 0)
     .toFixed(2);
 
-  // const itemCount = products.reduce(
-  //   (sum, item) => sum + (item.quantity || 1),
-  //   0,
-  // );
+  const itemCount = cartItems.reduce(
+    (sum: number, item: CartItem) => sum + (item.quantity || 1),
+    0,
+  );
 
   return (
     <div className="cart-summary">
       <h4>Cart Summary</h4>
-      <p>Total Items: {cartItems.length}</p>
+      <p>Total Items: {itemCount}</p>
       <p className="fw-bold">Total: ${total}</p>
       <Button className="btn btn-primary" onClick={() => navigate("/checkout")}>
         Proceed to Checkout
