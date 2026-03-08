@@ -41,10 +41,16 @@ const Checkout: React.FC = () => {
     if (!customerName.trim()) return "Please enter your name.";
     if (
       !customerEmail.trim() ||
-      !/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(customerEmail)
+      !/^[^@\s]+@[^@\s]+\.(com|net|org|edu|gov|mil)$/i.test(customerEmail)
     )
       return "Please enter a valid email address.";
-    if (!customerPhone.trim()) return "Please enter your phone number.";
+    if (
+      !customerPhone.trim() ||
+      !/^(\+1\s?)?(\([0-9]{3}\)|[0-9]{3})[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}$/.test(
+        customerPhone,
+      )
+    )
+      return "Please enter a valid phone number.";
     if (!shippingAddress.trim()) return "Please enter your shipping address.";
     if (!shippingCity.trim()) return "Please enter your city.";
     if (!shippingState.trim()) return "Please select your state.";
