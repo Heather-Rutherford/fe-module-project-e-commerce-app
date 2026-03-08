@@ -34,6 +34,7 @@
 
 - All data models (Product, CartItem) and Redux state are strongly typed using TypeScript interfaces.
 - Props and state are strictly typed for reliability and maintainability.
+- The files redux-persist-persistReducer.d.ts and redux-persist-session.d.ts are TypeScript declaration files and are used to tell TypeScript to accept imports from redux-persist/lib/persistReducer and redux-persist/lib/storage/session. These files prevent TypeScript errors about missing types when you use those modules in your Redux state management setup. These files are used for production purposes.
 
 ## 7. Cart Persistence
 

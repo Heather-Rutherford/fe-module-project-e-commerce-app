@@ -84,6 +84,86 @@ src/
 
 ---
 
+## Folder Structure
+
+The project is organized as follows:
+
+```
+eslint.config.js
+index.html
+package.json
+README.md
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+public/
+src/
+	App.css
+	App.tsx
+	index.css
+	main.tsx
+	assets/
+	components/
+		CartButton.tsx
+		CartSummary.tsx
+		EmptyCart.tsx
+		HomeButton.tsx
+		LoadingSpinner.tsx
+		OrderCompleted.tsx
+		OrderSummary.tsx
+		ProductCard.tsx
+		ShoppingCartItem.tsx
+		documentation/
+			PROJECT_ARCHITECTURE.md
+			PROJECT_FEATURES.md
+			PROJECT_IMPLEMENTATION_DETAILS.md
+			PROJECT_REQUIREMENTS.md
+			USING_THE_APPLICATION.md
+		extraneous/
+			example.txt
+			ProductListing.tsx
+			redux-persist-persistReducer.d.ts
+			redux-persist-session.d.ts
+			components/
+				addProduct.tsx
+				CartItem.tsx
+			navigation/
+				SideBar.tsx
+			pages/
+				AddProduct.tsx
+				EditProduct.tsx
+				Home.txt
+				ProductDetails.tsx
+		hooks/
+			useCategories.tsx
+			useProducts.tsx
+		navigation/
+			NavBar.tsx
+		pages/
+			Cart.tsx
+			Checkout.tsx
+			Home.tsx
+			PageLayout.tsx
+		redux/
+			cartSlice.ts
+			productSlice.ts
+			rootReducer.ts
+			store.ts
+		styles/
+			styles.css
+		types/
+			CartItem.ts
+			CartItemProps.ts
+			cartSlice.ts
+			Product.ts
+		utils/
+			Formatters.ts
+			RandomRating.ts
+```
+
+---
+
 ## Summary
 
 This architecture provides a clean separation of concerns, modularity, and scalability for building a modern e-commerce application. All major features are encapsulated in their own modules, making the codebase easy to navigate and extend.

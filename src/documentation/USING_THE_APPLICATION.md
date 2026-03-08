@@ -1,13 +1,41 @@
 # Using the Application: E-Commerce App
 
-## Getting Started
+## Setup & Installation
 
-1. **Install Dependencies**
-   - Run `npm install` in the project root to install all required packages.
+1. This project is deployed to Netlify. The URL is https://front-end-e-commerce-app.netlify.app/.
 
-2. **Start the Development Server**
-   - Run `npm run dev` to start the app locally.
-   - Open your browser and go to `http://localhost:5173` (or the port shown in your terminal).
+Alternatively, you can...
+Download the files by cloning the Git repository: https://github.com/Heather-Rutherford/fe-module-project-e-commerce-app.git. Once the repository has been cloned, install the application via the below instructions.
+
+After either accessing the website or installing the program, refer to the USING_THE_APPLICATION.md for more details on using this E-Commerce Application.
+
+## Installation of the program
+
+2. **Install dependencies:**
+
+```bash
+npm install
+```
+
+3. **Start development server:**
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+4. **Build for production:**
+
+```bash
+npm run build
+```
+
+5. **Preview production build:**
+
+```bash
+npm run preview
+```
 
 ---
 
@@ -53,7 +81,7 @@
 ## Tips & Notes
 
 - **State Persistence:**
-  - Your cart is saved in session storage. Closing the browser will clear the cart.
+  - Your cart is saved in session storage. Closing the browser will not clear the cart.
 - **Error Handling:**
   - If product images fail to load, a placeholder image will be shown.
   - Network/API errors are handled gracefully with user feedback.

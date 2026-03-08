@@ -2,19 +2,21 @@
 
 ## Product Catalog
 
+The products for the product catalog is retreived from the FakeStoreAPI. This project leverages the FakeStoreAPI to simulate asynchronous data fetching. This API, available at https://fakestoreapi.com/, provides a simulated environment for fetching product/category data.
+
 ## Product Listing and Display
 
 - Use React Query to retrieve all of the products in the store and display them on the Home component.
 - Show the title, price, category, description, rate, and image for each product.
 - Each product should have a button that allows the user to add it to the shopping cart.
 
-⚠️ Note on Images:Some image URLs provided by the FakeStore API currently return 404 errors. This is an API-side issue (the image files were removed or rotated), not a problem with your code. To handle this gracefully, implement a fallback so that if an image fails to load, a placeholder (for example, from https://via.placeholder.com) is displayed. This ensures the UI still looks consistent and usable.
+⚠️ Note on Images:Some image URLs provided by the FakeStore API currently return 404 errors. This is an API-side issue (the image files were removed or rotated), not a problem. Missing images are dealt with by implementing a fallback so that if an image fails to load, a placeholder (for example, from https://via.placeholder.com) is displayed. This ensures the UI still looks consistent and usable.
 
 ## Category Navigation
 
 - Provide a select dropdown that allows users to select a product category.
-- Use React Query to request the endpoint that returns an array of all categories: GET https://fakestoreapi.com/products/categories
-- The dropdown should not be hard coded. It should dynamically pull the values from the API.
+- Use React Query to request the endpoint that returns an array of all categories: GET https://fakestoreapi.com/products/{categories}
+- The dropdown is not hard coded. It should pull the categories dynamically from the API.
 - When the user selects a different category from the dropdown, only display the products from that category. Use React Query to request the category-specific endpoint:GET https://fakestoreapi.com/products/category/{category}
 - This endpoint returns the full product objects for that category (including title, price, category, description, rate, and image).
 

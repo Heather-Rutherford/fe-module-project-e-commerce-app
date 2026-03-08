@@ -10,10 +10,10 @@ type ProductCardProps = {
 function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (productTitle: string) => {
     try {
       dispatch(addToCart(product));
-      window.alert("Product added to cart successfully!");
+      window.alert(`${productTitle} added to cart successfully!`);
     } catch (err) {
       console.error(err);
       window.alert("Failed to add product to cart. Please try again.");
@@ -24,12 +24,11 @@ function ProductCard({ product }: ProductCardProps) {
     <>
       <div className="card">
         <img
-          src={product.image}
-          alt={product.title}
-          className="card-img-top product-img"
-          style={{ height: "150px", objectFit: "contain" }}
+          src={product.image || "https://placehold.co/125"}
+          alt={product.title || "Product"}
+          style={{ height: "125px", objectFit: "contain" }}
           onError={(e) => {
-            e.currentTarget.src = "https://placehold.co/150?text=Product+Image";
+            e.currentTarget.src = "https://placehold.co/125";
           }}
         />
         <div className="card-body">
@@ -45,7 +44,7 @@ function ProductCard({ product }: ProductCardProps) {
         <div className="card-footer">
           <Button
             className="btn btn-primary float-end"
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart(product.title)}
           >
             Add to Cart
           </Button>

@@ -10,7 +10,6 @@ import {
   useProducts,
   useFilteredProductsByCategory,
 } from "../hooks/useProducts";
-// import { type RootState } from "../redux/store";
 
 // Home page component to display list of products
 // Fetches products from Fake Store API and displays them
@@ -27,7 +26,6 @@ import {
 // Location: src/pages/Home.tsx
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  // const products = useSelector((state: RootState) => state.product.products);
 
   useEffect(() => {
     async function fetchProducts() {

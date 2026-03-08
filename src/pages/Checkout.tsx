@@ -245,6 +245,31 @@ const Checkout: React.FC = () => {
                   <option value="GooglePay">Google Pay</option>
                 </Form.Control>
               </section>
+              {paymentMethod === "CreditCard" && (
+                <div className="mb-4">
+                  <Form.Label htmlFor="creditCardInfo">
+                    Credit Card Information
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    id="creditCardInfo"
+                    placeholder="Enter your card number"
+                  />
+                  <div className="d-flex mt-2">
+                    <Form.Control
+                      type="text"
+                      id="creditCardExpiry"
+                      placeholder="MM/YY"
+                    />
+                    <Form.Control
+                      type="text"
+                      id="creditCardCVC"
+                      placeholder="CVC"
+                      className="ms-2"
+                    />
+                  </div>
+                </div>
+              )}
               <Button
                 className="btn btn-primary"
                 onClick={handlePlaceOrder}

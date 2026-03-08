@@ -45,11 +45,11 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
   return (
     <li className="cart-item">
       <img
-        src={product.image || "https://placehold.co/150"}
+        src={product.image || "https://placehold.co/125"}
         alt={product.title || "Product"}
-        style={{ height: "150px", objectFit: "contain" }}
+        style={{ height: "125px", objectFit: "contain" }}
         onError={(e) => {
-          e.currentTarget.src = "https://placehold.co/150";
+          e.currentTarget.src = "https://placehold.co/125";
         }}
       />
       <p className="product-title">

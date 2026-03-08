@@ -2,72 +2,119 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## E-Commerce App Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project is a modular front-end e-commerce application built with React, TypeScript, and Vite. It features product listings, shopping cart functionality, checkout flow, and order summary. The codebase is organized for scalability and maintainability, with reusable components, hooks, and Redux state management.
+
+Note: The checkout portion of this application asks for customer information, shipping information, and provides an option to enter a credit card number, expiration data, and CVC.
+
+Note: This application will note that the payment has been processed but there is no functionality for actually charging a card or processing other forms of payment. Dummy data can be entered for the credit card information.
+
+### Key Features
+
+- Product catalog and details
+- Shopping cart with add/remove/update
+- Checkout and order completion
+- Modular architecture for easy feature extension
+- TypeScript for type safety
+- Vite for fast development and build
+
+## Additional Documentation
+
+Extensive documentation outside this README is located in the documentation folder. The documentation folder contains the following files:
+
+- `src/documentation/PROJECT_ARCHITECTURE.md`
+- `src/documentation/PROJECT_FEATURES.md`
+- `src/documentation/PROJECT_IMPLEMENTATION_DETAILS.md`
+- `src/documentation/PROJECT_REQUIREMENTS.md`
+- `src/documentation/USING_THE_APPLICATION.md`
+
+Other features are described in the PROJECT_FEATURES.md file in the documentation folder.
+
+## Dependencies
+
+Main dependencies used in this project:
+
+- React
+- TypeScript
+- Vite
+- Redux
+- redux-persist
+- react-bootstrap
+
+For a complete list, see `package.json`.
 
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Setup & Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. This project is deployed to Netlify. The URL is https://front-end-e-commerce-app.netlify.app/.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Alternatively, you can...
+Download the files by cloning the Git repository: https://github.com/Heather-Rutherford/fe-module-project-e-commerce-app.git. Once the repository has been cloned, install the application via the below instructions.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+After either accessing the website or installing the program, refer to the USING_THE_APPLICATION.md for more details on using this E-Commerce Application.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Installation of the program
+
+2. **Install dependencies:**
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Start development server:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+4. **Build for production:**
+
+```bash
+npm run build
+```
+
+5. **Preview production build:**
+
+```bash
+npm run preview
+```
+
+## Overview of Use
+
+The home page of the application shows the products that can be filtered by category.
+
+Add a product by clicking 'Add to Cart'. An alert shows notifying you that the product has been added to the cart.
+
+Click the 'Cart' button in the upper right corner of the page to view your cart. You can add and delete items from the cart using the 'Delete' or the '+' and '-' buttons.
+
+At the bottom of the cart is a cart summary with the total number of items in the cart with the total for all the products.
+
+The 'Proceed to Checkout' button will take you to the checkout page where you will add customer details, shipping information, and payment details.
+
+The 'Place Order' button notifies you that your payment has been processed and your cart will be cleared. **_ Note: There is no functionality for actually charging a card or processing other forms of payment. _**
+
+Note: The checkout portion of this application asks for customer information, shipping information, and provides an option to enter a credit card number, expiration data, and CVC.
+
+Note: This application will note that the payment has been processed but there is no functionality for actually charging a card or processing other forms of payment. Dummy data can be entered for the credit card information.
+
+## Notes
+
+The checkout portion of this application asks for customer information, shipping information, and provides an option to enter a credit card number, expiration data, and CVC.
+
+This application will note that the payment has been processed but there is no functionality for actually charging a card or processing other forms of payment. Dummy data can be entered for the credit card information.
+
+## Contribution Guidelines
+
+- Fork the repo and create a feature branch
+- Add clear code comments for new features
+- Submit a pull request with a description of your changes
+
+## License
+
+N/A
